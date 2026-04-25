@@ -68,8 +68,12 @@ export default function SignInPage() {
         alert(data.message || "Invalid credentials");
       }
     } catch (error) {
-      console.error("Sign in error:", error);
-      alert("An error occurred during sign in. Please ensure the backend is running.");
+      console.error("Sign in error detailed:", {
+        error,
+        apiUrl: process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000",
+        message: error instanceof Error ? error.message : String(error)
+      });
+      alert("An error occurred during sign in. Please ensure the backend is running and the database is connected.");
     }
   };
 
