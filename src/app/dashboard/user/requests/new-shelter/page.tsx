@@ -14,9 +14,9 @@ import {
   Sparkles,
   Users,
   Clock,
-  Instagram,
   Globe,
 } from "lucide-react";
+
 import Link from "next/link";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
