@@ -95,7 +95,10 @@ export default function SuperAdminSettingsPage() {
 
   const fetchSettings = async () => {
     const token = localStorage.getItem("token");
-    const headers = token ? { Authorization: `Bearer ${token}` } : {};
+    const headers: HeadersInit = {};
+    if (token) headers["Authorization"] = `Bearer ${token}`;
+
+
     try {
         const res = await fetch(`${API_URL}/api/settings`, { headers });
         const data = await res.json();
@@ -109,7 +112,10 @@ export default function SuperAdminSettingsPage() {
     fetchSettings();
 
     const token = localStorage.getItem("token");
-    const headers = token ? { Authorization: `Bearer ${token}` } : {};
+    const headers: HeadersInit = {};
+    if (token) headers["Authorization"] = `Bearer ${token}`;
+
+
 
     fetch(`${API_URL}/api/users`, { headers })
       .then((res) => res.json())
@@ -157,12 +163,15 @@ export default function SuperAdminSettingsPage() {
 
   const handleReset = async () => {
       if (!confirm("Are you sure you want to reset ALL settings to defaults? This cannot be undone.")) return;
-      const token = localStorage.getItem("token");
-      try {
+          const token = localStorage.getItem("token");
+          const headers: HeadersInit = {};
+          if (token) headers["Authorization"] = `Bearer ${token}`;
+
           const res = await fetch(`${API_URL}/api/settings/reset`, {
               method: "POST",
-              headers: { Authorization: `Bearer ${token}` }
+              headers
           });
+
           if (res.ok) {
               alert("Settings reset successfully");
               fetchSettings();
