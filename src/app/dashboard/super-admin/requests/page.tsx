@@ -17,7 +17,8 @@ import {
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
 export default function RequestsDashboard() {
-  const [requests, setRequests] = useState([]);
+  const [requests, setRequests] = useState<any[]>([]);
+
   const [loading, setLoading] = useState(true);
   const [processingId, setProcessingId] = useState(null);
 
@@ -40,7 +41,8 @@ export default function RequestsDashboard() {
     fetchRequests();
   }, []);
 
-  const handleStatusUpdate = async (id, status) => {
+  const handleStatusUpdate = async (id: string, status: string) => {
+
     if (!confirm(`Are you sure you want to ${status.toLowerCase()} this request?`)) return;
     
     setProcessingId(id);
@@ -56,7 +58,8 @@ export default function RequestsDashboard() {
       });
       
       if (res.ok) {
-        setRequests(requests.map(req => req._id === id ? { ...req, status } : req));
+        setRequests(requests.map((req: any) => req._id === id ? { ...req, status } : req));
+
       } else {
         alert('Failed to update request');
       }
@@ -68,7 +71,8 @@ export default function RequestsDashboard() {
     }
   };
 
-  const getStatusBadge = (status) => {
+  const getStatusBadge = (status: string) => {
+
     switch (status) {
       case 'Approved':
         return <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-700"><CheckCircle2 className="h-3 w-3" /> APPROVED</span>;
@@ -79,7 +83,8 @@ export default function RequestsDashboard() {
     }
   };
 
-  const getTypeIcon = (type) => {
+  const getTypeIcon = (type: string) => {
+
     if (type === 'Suspension') return <ShieldAlert className="h-5 w-5 text-red-500" />;
     if (type === 'Shelter Creation') return <Building2 className="h-5 w-5 text-emerald-500" />;
     return <User className="h-5 w-5 text-blue-500" />;
@@ -89,7 +94,8 @@ export default function RequestsDashboard() {
   const [statusFilter, setStatusFilter] = useState('All');
   const [typeFilter, setTypeFilter] = useState('All');
 
-  const filteredRequests = requests.filter(req => {
+  const filteredRequests = requests.filter((req: any) => {
+
     const matchesSearch = req.shelter.toLowerCase().includes(searchTerm.toLowerCase()) || 
                          req.requesterName.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = statusFilter === 'All' || req.status === statusFilter;

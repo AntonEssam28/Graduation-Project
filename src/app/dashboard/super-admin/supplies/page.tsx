@@ -6,7 +6,8 @@ import { LayoutDashboard } from 'lucide-react';
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
 export default function SuppliesDashboard() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any[]>([]);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
