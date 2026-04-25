@@ -32,7 +32,8 @@ export default function CartPage() {
       }
 
       try {
-        const res = await fetch("http://localhost:5000/api/store");
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+        const res = await fetch(`${API_URL}/api/store`);
         if (res.ok) {
           const products = await res.json();
           const syncedCart = savedCart.map(item => {
