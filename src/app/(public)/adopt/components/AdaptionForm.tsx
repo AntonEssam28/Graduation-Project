@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useState, useEffect, type ChangeEvent, type FormEvent } from "react";
+
 import { Dog, HeartHandshake, MapPin, ShieldCheck, Loader2 } from "lucide-react";
 
 type AdoptionFormProps = {
