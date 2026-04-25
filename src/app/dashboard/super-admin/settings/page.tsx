@@ -163,6 +163,7 @@ export default function SuperAdminSettingsPage() {
 
   const handleReset = async () => {
       if (!confirm("Are you sure you want to reset ALL settings to defaults? This cannot be undone.")) return;
+      try {
           const token = localStorage.getItem("token");
           const headers: HeadersInit = {};
           if (token) headers["Authorization"] = `Bearer ${token}`;
@@ -180,6 +181,7 @@ export default function SuperAdminSettingsPage() {
           alert("Reset failed");
       }
   };
+
 
   const toggleMaintenance = async () => {
     const newVal = !systemSettings.isMaintenanceMode;
