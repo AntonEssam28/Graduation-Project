@@ -26,12 +26,13 @@ type RequestItem = {
   type: RequestType;
   title?: string;
   requesterName: string;
-  dogId: string;
+  dogId: any; // Can be string ID or populated object with .name
   shelter: string;
   createdAt: string;
   status: RequestStatus;
   message?: string;
 };
+
 
 const requestTypes = ["All", "Adoption", "Hosting", "Donation", "Supply Order"] as const;
 
