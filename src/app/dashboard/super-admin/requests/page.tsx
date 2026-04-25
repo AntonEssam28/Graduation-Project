@@ -20,7 +20,8 @@ export default function RequestsDashboard() {
   const [requests, setRequests] = useState<any[]>([]);
 
   const [loading, setLoading] = useState(true);
-  const [processingId, setProcessingId] = useState(null);
+  const [processingId, setProcessingId] = useState<string | null>(null);
+
 
   const fetchRequests = async () => {
     try {
