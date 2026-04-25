@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect, type ChangeEvent, type FormEvent } from "react";
+import { useState, useEffect, type ChangeEvent, type FormEvent, type ComponentType } from "react";
+
 import {
   AlertTriangle,
   PawPrint,
@@ -511,7 +512,8 @@ function InfoItem({
   icon: Icon,
   text,
 }: {
-  icon: React.ComponentType<{ className?: string }>;
+  icon: ComponentType<{ className?: string }>;
+
   text: string;
 }) {
   return (

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ComponentType } from "react";
+
 import { useParams, useRouter } from "next/navigation";
 import {
   ArrowLeft,

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ComponentType } from "react";
+
 import {
   Building2,
   Search,
@@ -292,7 +293,8 @@ function InfoItem({
   icon: Icon,
   text,
 }: {
-  icon: React.ComponentType<{ className?: string }>;
+  icon: ComponentType<{ className?: string }>;
+
   text: string;
 }) {
   return (

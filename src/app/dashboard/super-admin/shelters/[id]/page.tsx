@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ComponentType } from "react";
+
 import { useParams, useRouter } from "next/navigation";
 import {
   ArrowLeft,
@@ -276,7 +277,8 @@ function InfoItem({
   icon: Icon,
   text,
 }: {
-  icon: React.ComponentType<{ className?: string }>;
+  icon: ComponentType<{ className?: string }>;
+
   text: string;
 }) {
   return (
@@ -294,7 +296,8 @@ function StatCard({
 }: {
   label: string;
   value: number | string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: ComponentType<{ className?: string }>;
+
 }) {
   return (
     <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
